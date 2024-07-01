@@ -1,12 +1,11 @@
-//import ButtonAppBar from './components/AppBar/index.js';
-import ChartLines from './components/Charts/ChartLines/index.js';
-//import Planilha from './components/Planilha/index.js';
+import SimpleLineChart from "./components/Charts/ChartLines/index.js";
+import Layout from "./components/Layout/index.js";
 import GlobalStyle from "./styles/global.js"
 
 function App() {
   return (
     <>
-      <ChartLines/>
+      <Layout/>
       <GlobalStyle/>
     </>
   );

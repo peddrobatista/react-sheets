@@ -6,8 +6,8 @@ const Global = createGlobalStyle`
         padding: 0;
     }
     body{
-        font-family: 'Poppins', Sans-serif;
-        background: #f2f2f2;
+        font-family: 'Roboto', Sans-serif;
+        background: #f1f2f6;
     }
 `;
 export default Global;

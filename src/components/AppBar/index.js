@@ -1,27 +1,20 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import * as D from './styles';
+import logoPrefeitura from '../../images/logo_prefeitura.png';
+import logoJD from '../../images/logo-jdRosa.png';
 
-export default function ButtonAppBar() {
+
+const ButtonAppBar = () => {
 
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar sx={{height: 100}}>
-          <Typography variant="h6" component="a" 
-          sx={{
-            flexGrow: 1,
-            textAlign: 'center',
-            fontSize: '29px',
-            fontWeight: '800',
-          }}>
-            Estatísticas
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </Box>
+    <D.Header>
+      <img src={logoJD} width={170} alt='logo_JD'/>
+      <D.Title>Estatísticas</D.Title>
+      <img src={logoPrefeitura} width={178} alt='logo_prefeitura'/>
+    </D.Header>
+     
   );
 }
+
+export default ButtonAppBar;

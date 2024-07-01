@@ -66,9 +66,10 @@ const Planilha = () => {
 
   return (
     <Paper sx={{
-      width: '40%',
+      width: '96%',
       margin: '20px auto',
-      height: 600,
+      borderRadius: '10px',
+      height: 500,
       '& .theme-header': {
         backgroundColor: '#595959',
         color: '#fff',

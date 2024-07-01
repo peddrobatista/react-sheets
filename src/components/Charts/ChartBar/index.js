@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { LineChart } from '@mui/x-charts/LineChart';
-import { StyledChartContainer } from './styles'; // Importe o StyledChartContainer do styles.js
+import { BarChart } from '@mui/x-charts/BarChart';
+import { StyledChartContainer } from './styles';
 
-export default function SimpleLineChart() {
+export default function SimpleBarChart() {
   const [chartData, setChartData] = useState({ xAxis: [], series: [] });
 
   useEffect(() => {
@@ -50,7 +50,7 @@ export default function SimpleLineChart() {
         }
 
         // Define o estado com os dados formatados para o gráfico
-        setChartData({ xAxis: xAxisData, series: [{ data: seriesData, label: 'Salário' }] });
+        setChartData({ xAxis: xAxisData, series: [{ data: seriesData, label: 'Salário', /*color: '#636e72'*/ }] });
       } catch (error) {
         console.error('Erro ao buscar dados da API:', error);
       }
@@ -62,12 +62,13 @@ export default function SimpleLineChart() {
   return (
     <StyledChartContainer>
       {chartData.xAxis.length > 0 && chartData.series.length > 0 ? (
-        <LineChart
-          className="line-chart"
+        <BarChart
+          className="bar-chart"
+          borderRadius={6}
           width={800}
           height={300}
+          xAxis={[{ scaleType: 'band', data: chartData.xAxis }]}
           series={chartData.series}
-          xAxis={[{ scaleType: 'point', data: chartData.xAxis }]}
           grid={{ vertical: true, horizontal: true }}
         />
       ) : (
