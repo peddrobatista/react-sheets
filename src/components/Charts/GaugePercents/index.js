@@ -11,8 +11,9 @@ const settings = {
   value: 0, // Inicializa o valor com 0
 };
 
-const ArcDesign = () => {
-  const [count, setCount] = useState(0);
+const ArcDesignPercents = () => {
+  const [percentage, setPercentage] = useState(0);
+  const maxRecords = 100; // Defina o valor máximo aqui
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +21,8 @@ const ArcDesign = () => {
         const response = await axios.get('http://localhost:3001/rows');
         const data = response.data.values;
         const count = data.length - 1; // Subtrai 1 para não contar o cabeçalho
-        setCount(count);
+        const percentage = (count / maxRecords) * 100; // Calcula a porcentagem
+        setPercentage(percentage);
       } catch (error) {
         console.error('Erro ao buscar dados da API:', error);
       }
@@ -34,7 +36,7 @@ const ArcDesign = () => {
       <Typography className='title' variant='h4' sx={{ fontWeight: 700, color: '#636e72' }}>Gauge</Typography>
       <Gauge
         {...settings}
-        value={count} // Define o valor do Gauge como a contagem de registros
+        value={percentage} // Define o valor do Gauge como a porcentagem
         cornerRadius="50%" // borda do valor do arco
         className='gauge-chart'
         sx={(theme) => ({
@@ -48,10 +50,10 @@ const ArcDesign = () => {
             fill: '#dfe4ea',
           },
         })}
-        text={({ value, valueMax }) => `${value}`}
+        text={({ value, valueMax }) => `${Math.round(value)}%`} // Mostra a porcentagem
       />
     </StyledChartContainer>
   );
 }
 
-export default ArcDesign;
+export default ArcDesignPercents;

@@ -9,6 +9,7 @@ import DonutChart from "../Charts/ChartDonut";
 import ChartPie from "../Charts/ChartPie";
 import ArcDesign from "../Charts/Gauge";
 import Planilha from "../Planilha/index";
+import ArcDesignPercents from "../Charts/GaugePercents";
 const style = {
     background: "#ffa602c5", 
     '&:hover': {
@@ -40,7 +41,7 @@ const Layout = () => {
                     </div>
                     <div className="grid-item i2">
                         <div class="gi">
-                            <DonutChart/>
+                            <ChartPie/>
                         </div>
                         <div class="gi">
                             <DonutChart/>
@@ -51,7 +52,7 @@ const Layout = () => {
                     </div>
                     <div className="grid-item i3">
                         <div class="gi">
-                            <ArcDesign/>
+                            <ArcDesignPercents/>
                         </div>
                         <div class="gi">
                             <ArcDesign/>

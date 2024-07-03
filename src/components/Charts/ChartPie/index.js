@@ -54,14 +54,10 @@ const CustomPieChart = () => {
   };
 
   return (
-    <Stack
-      justifyContent="center"
-      alignItems="center"
-      spacing={2}
-      sx={{ height: '80vh', textAlign: 'center' }}
-    >
-      <Box>
-        <Typography variant='h4' sx={{fontWeight: 700, color: '#636e72'}}>Pie</Typography>
+    <Box display="flex" justifyContent="center" alignItems="center">
+    <Stack direction="row" textAlign="center" spacing={2} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <Box flexGrow={1}>
+        <Typography variant='h6' sx={{fontWeight: 700, color: '#636e72'}}>Pie</Typography>
         {chartData.length > 0 ? (
           <PieChart
             series={[
@@ -69,23 +65,48 @@ const CustomPieChart = () => {
                 data: chartData,
                 arcLabel: getArcLabel,
                 highlightScope: { faded: 'global', highlighted: 'item' },
-                faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' }, 
+                faded: { innerRadius: 0, additionalRadius: -30, color: 'gray' }, 
+                outerRadius: 100,
+                cx: 95,
+                cy: 100
               },
             ]}
+            slotProps={{
+              legend: {
+                direction: 'row',
+                position: { 
+                  vertical: 'bottom', 
+                  horizontal: 'middle' 
+                },
+                itemMarkWidth: 20,
+                itemMarkHeight: 17,
+                markGap: 5,
+                itemGap: 10,
+                labelStyle: {
+                  fontSize: 12,
+                  fontWeight: 600,
+                  fill: '#636e72',
+                },
+                padding: 20,
+                
+              }
+            }}
             sx={{
-              [`& .${pieArcLabelClasses.root}`]: {
+              [`& .${pieArcLabelClasses.root}`]: { // cor da legenda do preenchimento
                 fill: '#fff',
                 fontWeight: 'bold',
-              },
+                fontSize: 17
+              }, 
             }}
-            width={400}
-            height={200}
+            width={200}
+            height={260}
           />
         ) : (
           <div>Carregando...</div>
         )}
       </Box>
     </Stack>
+    </Box>
   );
 }
 
